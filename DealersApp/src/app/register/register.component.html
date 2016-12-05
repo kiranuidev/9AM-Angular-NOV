@@ -1,0 +1,81 @@
+<div class="form-horizontal">
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Email</label>
+            <div class="col-lg-6">
+                <input type="text" 
+                class="form-control" 
+                placeholder="Email"
+                [(ngModel)]="user.Email" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail" class="col-lg-2 control-label">First Name</label>
+            <div class="col-lg-6">
+                <input type="text" 
+                class="form-control"
+                 placeholder="First Name"
+                  [(ngModel)]="user.FirstName"  >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Last Name</label>
+            <div class="col-lg-6">
+                <input type="text"
+                 class="form-control"
+                  placeholder="Last Name" 
+                   [(ngModel)]="user.LastName" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label"> Password</label>
+            <div class="col-lg-6">
+                <input type="password" 
+                class="form-control" 
+                 [(ngModel)]="user.Password" 
+                placeholder="Password" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="select" 
+            class="col-lg-2 control-label">Country</label>
+            <div class="col-lg-6">
+                <select class="form-control"> </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label"> Gender</label>
+            <div>
+                <label>
+                    <input type="radio" 
+                    value="M" 
+                    name="gender" 
+                     [(ngModel)]="user.Gender" 
+                    >Male
+             
+                    <input type="radio" value="F" 
+                    name="gender"
+                      [(ngModel)]="user.Gender" 
+                    >Female
+                </label>
+            </div>
+        </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label"></label>
+            <div>
+                <label>
+                    <input type="checkbox" 
+                     [(ngModel)]="user.AgreeTerms" 
+                    > I Agree Terms
+                </label>
+            </div>
+           
+        </div>
+
+        <div class="form-group" *ngIf="user.AgreeTerms">
+            <label class="col-lg-2 control-label"> </label>
+            <div class="col-lg-6 col-lg-offset-4">
+                <button class="btn btn-primary" 
+               (click)="registerUser()" >Register</button>
+            </div>
+        </div>
+</div>{{user|json}}
