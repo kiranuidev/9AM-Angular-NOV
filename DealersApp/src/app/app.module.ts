@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+//Services
+import {LookupService} from './services/lookup.service';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
@@ -16,7 +18,7 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [LookupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

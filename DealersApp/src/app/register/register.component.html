@@ -39,7 +39,10 @@
             <label for="select" 
             class="col-lg-2 control-label">Country</label>
             <div class="col-lg-6">
-                <select class="form-control"> </select>
+                <select class="form-control"
+                 [(ngModel)]="user.SelectedCountry">
+                        <option *ngFor="let country of Countries" [ngValue]="country.code">{{country.name}}</option>
+                     </select>
             </div>
         </div>
         <div class="form-group">
