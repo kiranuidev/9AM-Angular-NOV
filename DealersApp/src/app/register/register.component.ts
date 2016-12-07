@@ -6,15 +6,25 @@ import {LookupService} from '../services/lookup.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(lookupService:LookupService){
+
+  constructor(public lookupService:LookupService){
     this.Countries=lookupService.getCountries();
   }
-  user = {};//object
+  user = {
+    SelectedCountry:"",
+    SelectedState:"",
+    Gender:"M"
+  };//object
   Countries:Array<any>
-  
+  States:Array<any>
 
   registerUser() {
     console.log(this.user);
   }
-
+  getStates(){
+    this.States=[];
+    this.States=this.lookupService.
+         getStates(this.user.SelectedCountry);
+         console.log(this.States);
+  }
 }
