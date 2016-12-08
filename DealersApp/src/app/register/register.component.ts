@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LookupService} from '../services/lookup.service';
+import { LookupService } from '../services/lookup.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -7,24 +7,33 @@ import {LookupService} from '../services/lookup.service';
 })
 export class RegisterComponent {
 
-  constructor(public lookupService:LookupService){
-    this.Countries=lookupService.getCountries();
+  constructor(public lookupService: LookupService) {
+    // this.Countries=lookupService.getCountries();
+
+    lookupService.getCountriesFromApi()
+      .then(
+      (data) => {
+        this.Countries = data.countries;
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
   user = {
-    SelectedCountry:"",
-    SelectedState:"",
-    Gender:"M"
+    SelectedCountry: "",
+    SelectedState: "",
+    Gender: "M"
   };//object
-  Countries:Array<any>
-  States:Array<any>
+  Countries: Array<any>
+  States: Array<any>
 
   registerUser() {
     console.log(this.user);
   }
-  getStates(){
-    this.States=[];
-    this.States=this.lookupService.
-         getStates(this.user.SelectedCountry);
-         console.log(this.States);
+  getStates() {
+    this.States = [];
+    this.States = this.lookupService.
+      getStates(this.user.SelectedCountry);
+    console.log(this.States);
   }
 }

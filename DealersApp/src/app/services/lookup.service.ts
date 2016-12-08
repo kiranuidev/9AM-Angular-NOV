@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-
+import {Http} from '@angular/http';
 @Injectable()
 export class LookupService {
 
-  constructor() { }
+  constructor(private http:Http) {
+
+
+   }
   private _stateList =
   [{
     name:"Andhra Pradesh",stateCode:"AP",countryCode:"IN"},
@@ -27,4 +30,12 @@ private _stateArray:Array<any>
      }
      return  this._stateArray;
   }
+   
+   getCountriesFromApi(){
+     return this.http.get("api/countries.json")
+     .toPromise()
+     .then((response)=>response.json())
+     .catch((errorResponse)=>errorResponse.json());
+   }
+  
 }
