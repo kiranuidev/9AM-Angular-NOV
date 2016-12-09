@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { LookupService } from '../services/lookup.service';
 @Component({
   selector: 'app-register',
@@ -6,10 +6,11 @@ import { LookupService } from '../services/lookup.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+   @Input() heading ="";
 
   constructor(public lookupService: LookupService) {
     // this.Countries=lookupService.getCountries();
-
+   
     lookupService.getCountriesFromApi()
       .then(
       (data) => {

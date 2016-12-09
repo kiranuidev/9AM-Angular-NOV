@@ -1,0 +1,19 @@
+step 1
+  get the HttpModule 
+  get the operator Promise
+  
+Register the HttpModule with appModule.
+
+Step 2: in the lookup.service.ts
+ import http Service from '@angular/http'
+Step3: inject the http as a constructor parameter
+
+step4. create a method
+step 5. make the http.get(url) 
+step 6. chain the promise to the http.get/post/put/delete
+step 7. handle the positive and negative responses by then and catch
+
+
+
+
+
