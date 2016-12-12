@@ -1,4 +1,13 @@
+<!--<div class="container">
+   
+    <div *ngIf="isUserRegistered">
+        <h1>Welcome {{username}}</h1>
+        </div>
+    <button class="btn btn-primary" (click)="setPageName('Register')"
+  
+    >Register</button>
+<app-register [heading]="pageName"   (registered)= "handleChange($event)"></app-register>
+</div>-->
 <div class="container">
-    <button class="btn btn-primary" (click)="setPageName('Register')">Register</button>
-<app-register [heading]="pageName"></app-register>
+    <app-header></app-header>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { LookupService } from '../services/lookup.service';
 @Component({
   selector: 'app-register',
@@ -7,6 +7,7 @@ import { LookupService } from '../services/lookup.service';
 })
 export class RegisterComponent {
    @Input() heading ="";
+   @Output() registered:EventEmitter<any> = new EventEmitter<any>();
 
   constructor(public lookupService: LookupService) {
     // this.Countries=lookupService.getCountries();
@@ -30,6 +31,7 @@ export class RegisterComponent {
 
   registerUser() {
     console.log(this.user);
+    this.registered.next(this.user);
   }
   getStates() {
     this.States = [];
@@ -37,4 +39,8 @@ export class RegisterComponent {
       getStates(this.user.SelectedCountry);
     console.log(this.States);
   }
+
+ 
+  
+ 
 }
