@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 
 //Services
 import {LookupService} from './services/lookup.service';
-
+import {LoginService} from './services/login.service';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
@@ -30,7 +30,7 @@ import { HomeComponent } from './home/home.component';
     HttpModule
     
   ],
-  providers: [LookupService],
+  providers: [LookupService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

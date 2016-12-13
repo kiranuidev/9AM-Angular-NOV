@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LoginService } from '../services/login.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,11 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public loginService:LoginService) { }
   pageName="";
   confirmMessage="";
+  showLogout:Boolean=false;
   ngOnInit() {
+    this.loginService.isUserLoggedIn().subscribe(
+      (result:Boolean)=>{
+      console.log(result);
+      this.showLogout=result;
+    });
   }
+  logout(){
+    this.loginService.logout();
+  }
+  
   isLoggedIn=false;
   handleClick(type){
     this.pageName=type;

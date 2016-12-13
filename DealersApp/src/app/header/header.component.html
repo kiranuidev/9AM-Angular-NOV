@@ -16,10 +16,19 @@
         <li><a href="#">Link</a></li>
       </ul>
       
-      <ul class="nav navbar-nav navbar-right" *ngIf="!isLoggedIn">
+      <!--<ul class="nav navbar-nav navbar-right" *ngIf="!isLoggedIn">
+        <li><button type="button" class="btn btn-primary" (click)="handleClick('login')">Login</button></li>
+        <li><button type="button" class="btn btn-primary"  (click)="handleClick('register')">Register</button></li>
+      </ul>-->
+      <ul class="nav navbar-nav navbar-right" *ngIf="!showLogout">
         <li><button type="button" class="btn btn-primary" (click)="handleClick('login')">Login</button></li>
         <li><button type="button" class="btn btn-primary"  (click)="handleClick('register')">Register</button></li>
       </ul>
+       <ul class="nav navbar-nav navbar-right" *ngIf="showLogout">
+        <li><button type="button" class="btn btn-primary" (click)="logout()">Logout</button></li>
+        
+      </ul>
+      
     </div>
   </div>
 </nav>
