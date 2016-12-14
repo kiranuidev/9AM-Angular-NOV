@@ -11,7 +11,7 @@ export class RegisterComponent {
 
   constructor(public lookupService: LookupService) {
     // this.Countries=lookupService.getCountries();
-   
+
     lookupService.getCountriesFromApi()
       .then(
       (data) => {
@@ -19,7 +19,8 @@ export class RegisterComponent {
       })
       .catch((error) => {
         console.log(error)
-      })
+      });
+      this.getCountries()
   }
   user = {
     SelectedCountry: "",
@@ -40,7 +41,12 @@ export class RegisterComponent {
     console.log(this.States);
   }
 
- 
+ getCountries(){
+   this.lookupService.getCountriesFromApiObservable()
+   .subscribe((result)=>{
+     console.log(result);
+   });
+ }
   
  
 }
