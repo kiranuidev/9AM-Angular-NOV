@@ -36,14 +36,14 @@ export class LookupService {
   }
 
   getCountriesFromApi() {
-    return this.http.get("api/countries.json")
+    return this.http.get("data/countries.json")
       .toPromise()
       .then((response) => response.json())
       .catch((errorResponse) => errorResponse.json());
   }
 
   getCountriesFromApiObservable(): Observable<any> {
-    return this.http.get("api/countries.json")
+    return this.http.get("data/countries.json")
       .map((response) =>{ 
         
         response.json()

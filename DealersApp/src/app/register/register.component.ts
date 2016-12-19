@@ -1,15 +1,17 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { LookupService } from '../services/lookup.service';
+import { RegisterService } from '../services/register.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers:[RegisterService]
 })
 export class RegisterComponent {
    @Input() heading ="";
    @Output() registered:EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(public lookupService: LookupService) {
+  constructor(public lookupService: LookupService,public registerService:RegisterService) {
     // this.Countries=lookupService.getCountries();
 
     lookupService.getCountriesFromApi()
@@ -25,14 +27,20 @@ export class RegisterComponent {
   user = {
     SelectedCountry: "",
     SelectedState: "",
-    Gender: "M"
+    Gender: "M",
+    phone:"1234567890"
   };//object
   Countries: Array<any>
   States: Array<any>
 
   registerUser() {
     console.log(this.user);
+    this.registerService.registerUser(this.user)
+    .subscribe((result=>{
+      console.log(result);
+    }));
     this.registered.next(this.user);
+
   }
   getStates() {
     this.States = [];
@@ -47,6 +55,14 @@ export class RegisterComponent {
      console.log(result);
    });
  }
+  countrySelected(data){
+    if(data==null ||data==undefined ||data==""){
+
+    }
+    else{
+  this.user.SelectedCountry  = data;
+    }
   
+   }
  
 }

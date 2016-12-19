@@ -1,71 +1,77 @@
 <h1>{{heading}}</h1>
 <div class="form-horizontal">
-          <div class="form-group">
-            <label class="col-lg-2 control-label">Email</label>
-            <div class="col-lg-6">
-                <input type="text" 
-                class="form-control" 
-                placeholder="Email"
-                [(ngModel)]="user.Email" >
-            </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Email</label>
+        <div class="col-lg-6">
+            <input type="text" class="form-control" placeholder="Email" [(ngModel)]="user.Email">
         </div>
-        <div class="form-group">
-            <label for="inputEmail" class="col-lg-2 control-label">First Name</label>
-            <div class="col-lg-6">
-                <input type="text" 
-                class="form-control"
-                 placeholder="First Name"
-                  [(ngModel)]="user.FirstName"  >
-            </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail" class="col-lg-2 control-label">First Name</label>
+        <div class="col-lg-6">
+            <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="user.FirstName">
         </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Last Name</label>
-            <div class="col-lg-6">
-                <input type="text"
-                 class="form-control"
-                  placeholder="Last Name" 
-                   [(ngModel)]="user.LastName" >
-            </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Last Name</label>
+        <div class="col-lg-6">
+            <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="user.LastName">
         </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label"> Password</label>
-            <div class="col-lg-6">
-                <input type="password" 
-                class="form-control" 
-                 [(ngModel)]="user.Password" 
-                placeholder="Password" >
-            </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> Password</label>
+        <div class="col-lg-6">
+            <input type="password" class="form-control" [(ngModel)]="user.Password" placeholder="Password">
         </div>
-        <div class="form-group">
-            <label for="select" 
-            class="col-lg-2 control-label">Country</label>
-            <div class="col-lg-6">
-                <select class="form-control"
+    </div>
+  
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Date Of Birth</label>
+        <ng2-datepicker [(ngModel)]="user.DateOfBirth" aria-placeholder="Enter Date of Birth"></ng2-datepicker>
+    </div>
+    <div class="form-group">
+        <label for="select" class="col-lg-2 control-label">Country</label>
+        <div class="col-lg-6">
+            <!--<select class="form-control"
                  [(ngModel)]="user.SelectedCountry" (change)="getStates()">
                         <option value="">Please Select</option>
                         <option
                          *ngFor="let country of Countries"
                           [ngValue]="country.code">{{country.name}}</option>
-                     </select>
-            </div>
+                     </select>-->
+
+            <typeahead [(ngModel)]="user.SelectedCountry" 
+            [list]="Countries" 
+            [searchProperty]="'name'" 
+            [displayProperty]="'name'" 
+            [maxSuggestions]="2"
+                (suggestionSelected)="countrySelected($event)" 
+                placeholder="Search">
+            </typeahead>
         </div>
+    </div>
+      
         <div class="form-group">
-            <label for="select" 
-            class="col-lg-2 control-label">State</label>
-            <div class="col-lg-6">
-                <select class="form-control"
-                 [(ngModel)]="user.SelectedState">
+        <label class="col-lg-2 control-label"> Phone</label>
+        <div class="col-lg-6">
+           <label>{{user.phone|phoneformatter:user.SelectedCountry.code}}</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="select" class="col-lg-2 control-label">State</label>
+        <div class="col-lg-6">
+            <select class="form-control" [(ngModel)]="user.SelectedState">
                  <option value="">Please Select</option>
                         <option
                          *ngFor="let state of States"
                           [ngValue]="state.stateCode">{{state.name}}</option>
                      </select>
-            </div>
         </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label"> Gender</label>
-            <div>
-                <label>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> Gender</label>
+        <div>
+            <label>
                     <input type="radio" 
                     value="M" 
                     name="gender" 
@@ -77,25 +83,24 @@
                       [(ngModel)]="user.Gender" 
                     >Female
                 </label>
-            </div>
         </div>
-          <div class="form-group">
-            <label class="col-lg-2 control-label"></label>
-            <div>
-                <label>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"></label>
+        <div>
+            <label>
                     <input type="checkbox" 
                      [(ngModel)]="user.AgreeTerms" 
                     > I Agree Terms
                 </label>
-            </div>
-           
         </div>
 
-        <div class="form-group" *ngIf="user.AgreeTerms">
-            <label class="col-lg-2 control-label"> </label>
-            <div class="col-lg-6 col-lg-offset-4">
-                <button class="btn btn-primary" 
-               (click)="registerUser()" >Register</button>
-            </div>
+    </div>
+
+    <div class="form-group" *ngIf="user.AgreeTerms">
+        <label class="col-lg-2 control-label"> </label>
+        <div class="col-lg-6 col-lg-offset-4">
+            <button class="btn btn-primary" (click)="registerUser()">Register</button>
         </div>
+    </div>
 </div>{{user|json}}

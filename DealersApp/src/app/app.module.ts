@@ -5,8 +5,9 @@ import {HttpModule} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-
-
+//Third party
+import {DatePickerModule} from 'ng2-datepicker';
+import { Typeahead } from 'ng2-typeahead';
 //Services
 import {LookupService} from './services/lookup.service';
 import {LoginService} from './services/login.service';
@@ -15,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { PhoneformatterPipe } from './pipes/phoneformatter.pipe';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,15 @@ import { HomeComponent } from './home/home.component';
     RegisterComponent,
     HeaderComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    Typeahead,
+    PhoneformatterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    DatePickerModule
     
   ],
   providers: [LookupService,LoginService],
