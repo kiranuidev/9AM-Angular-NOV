@@ -12,7 +12,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="">Home <span class="sr-only">(current)</span></a></li>
         <li><a href="#">Link</a></li>
       </ul>
       
@@ -20,9 +20,18 @@
         <li><button type="button" class="btn btn-primary" (click)="handleClick('login')">Login</button></li>
         <li><button type="button" class="btn btn-primary"  (click)="handleClick('register')">Register</button></li>
       </ul>-->
-      <ul class="nav navbar-nav navbar-right" *ngIf="!showLogout">
+      <!--<ul class="nav navbar-nav navbar-right" *ngIf="!showLogout">
         <li><button type="button" class="btn btn-primary" (click)="handleClick('login')">Login</button></li>
         <li><button type="button" class="btn btn-primary"  (click)="handleClick('register')">Register</button></li>
+      </ul>
+       <ul class="nav navbar-nav navbar-right" *ngIf="showLogout">
+        <li><button type="button" class="btn btn-primary" (click)="logout()">Logout</button></li>
+        
+      </ul>-->
+
+      <ul class="nav navbar-nav navbar-right" *ngIf="!showLogout">
+        <li><button type="button" class="btn btn-primary" routerLink="/login">Login</button></li>
+        <li><button type="button" class="btn btn-primary"  routerLink="/register">Register</button></li>
       </ul>
        <ul class="nav navbar-nav navbar-right" *ngIf="showLogout">
         <li><button type="button" class="btn btn-primary" (click)="logout()">Logout</button></li>
@@ -32,7 +41,7 @@
     </div>
   </div>
 </nav>
-<div *ngIf="pageName=='register'">
+<!--<div *ngIf="pageName=='register'">
 <app-register [heading]="pageName" (registered)= "handleChange($event)"></app-register>
 </div>
 <div *ngIf="pageName=='login'">
@@ -42,4 +51,5 @@
 <div *ngIf="pageName=='home'">
   <div>{{confirmMessage}}</div>
 <app-home></app-home>
-</div>
+</div>-->
+<router-outlet></router-outlet>

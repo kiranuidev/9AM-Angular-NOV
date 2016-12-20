@@ -1,6 +1,7 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { LookupService } from '../services/lookup.service';
 import { RegisterService } from '../services/register.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,7 +12,9 @@ export class RegisterComponent {
    @Input() heading ="";
    @Output() registered:EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(public lookupService: LookupService,public registerService:RegisterService) {
+  constructor(public lookupService: LookupService,
+  public registerService:RegisterService
+  ,public router:Router) {
     // this.Countries=lookupService.getCountries();
 
     lookupService.getCountriesFromApi()
@@ -40,6 +43,7 @@ export class RegisterComponent {
       console.log(result);
     }));
     this.registered.next(this.user);
+    this.router.navigateByUrl("home",this.user);
 
   }
   getStates() {
