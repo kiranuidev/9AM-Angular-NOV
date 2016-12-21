@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PhoneformatterPipe } from './pipes/phoneformatter.pipe';
 import { ProductComponent } from './product/product.component';
+import { DatepickerDirective } from './datepicker.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProductComponent } from './product/product.component';
     HomeComponent,
     Typeahead,
     PhoneformatterPipe,
-    ProductComponent
+    ProductComponent,
+    DatepickerDirective
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { ProductComponent } from './product/product.component';
        } },
         { path: "home", component: HomeComponent,
         children:[
+           { path: '', redirectTo: 'product', pathMatch: 'full' },
           {path:"product",component:ProductComponent}
         ]
        },
