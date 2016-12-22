@@ -12,7 +12,7 @@ export class RegisterComponent {
    @Input() heading ="";
    @Output() registered:EventEmitter<any> = new EventEmitter<any>();
 
-   restrictions={max:"10D"};
+  minDate="-1D";
   constructor(public lookupService: LookupService,
   public registerService:RegisterService
   ,public router:Router) {

@@ -6,9 +6,9 @@ import { Directive,ElementRef,HostListener,Input } from '@angular/core';
 export class DatepickerDirective {
 
   constructor(private el:ElementRef) { 
-    console.log(this.options);
+    console.log(this.minDate);
   }
-  @Input() options={};
+  @Input() minDate="";
   @HostListener("load") load(){
     //console.log(this.el);
     $(this.el.nativeElement).datepicker();
@@ -16,7 +16,7 @@ export class DatepickerDirective {
    
   @HostListener("click") clickMe(){
     console.log(this.el);
-    $(this.el.nativeElement).datepicker();
+    $(this.el.nativeElement).datepicker({minDate:"-10D",maxDate:"+10D"});
   }
 
 }

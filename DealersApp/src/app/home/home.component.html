@@ -1,7 +1,5 @@
-<p>
-  home works!
-</p>
-
-<a routerLink="/product">Product</a>
-    
-<router-outlet></router-outlet>
+  <div *ngFor="let item of [1,2,3,4,5,6]">
+      <card *appDelay="500 * item">
+        {{item}}
+      </card>
+    </div>

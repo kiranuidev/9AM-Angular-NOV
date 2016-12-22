@@ -20,6 +20,9 @@ import { HomeComponent } from './home/home.component';
 import { PhoneformatterPipe } from './pipes/phoneformatter.pipe';
 import { ProductComponent } from './product/product.component';
 import { DatepickerDirective } from './datepicker.directive';
+import { HighlightDirective } from './highlight.directive';
+import { DelayDirective } from './delay.directive';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { DatepickerDirective } from './datepicker.directive';
     Typeahead,
     PhoneformatterPipe,
     ProductComponent,
-    DatepickerDirective
+    DatepickerDirective,
+    HighlightDirective,
+    DelayDirective,
+    CardComponent
   ],
   imports: [
     BrowserModule,
