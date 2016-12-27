@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Router, RouterModule } from '@angular/router';
 
@@ -23,6 +23,8 @@ import { DatepickerDirective } from './datepicker.directive';
 import { HighlightDirective } from './highlight.directive';
 import { DelayDirective } from './delay.directive';
 import { CardComponent } from './card/card.component';
+import { SimpleformComponent } from './simpleform/simpleform.component';
+import { ComplexformComponent } from './complexform/complexform.component';
 
 @NgModule({
   declarations: [
@@ -37,13 +39,16 @@ import { CardComponent } from './card/card.component';
     DatepickerDirective,
     HighlightDirective,
     DelayDirective,
-    CardComponent
+    CardComponent,
+    SimpleformComponent,
+    ComplexformComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     DatePickerModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       [{ path: 'login', component: LoginComponent },
        { path: "register", component: RegisterComponent,data:{
@@ -55,7 +60,11 @@ import { CardComponent } from './card/card.component';
           {path:"product",component:ProductComponent}
         ]
        },
-         { path: "", component: HomeComponent }]
+         { path: "", component: HomeComponent },
+         {path:"product",component:ProductComponent},
+          {path:"simpleform",component:SimpleformComponent},
+           {path:"complexform",component:ComplexformComponent}
+          ]
        )
 
   ],

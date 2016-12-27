@@ -7,7 +7,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <!--named transclusion-->
+      <!--<ng-content card-body></ng-content>-->
+      <ng-content select="[card1][card2]"></ng-content>
+      <!--class transclusion-->
+      <!--<ng-content select=".my-class"></ng-content>-->
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -32,6 +36,9 @@
       <ul class="nav navbar-nav navbar-right" *ngIf="!showLogout">
         <li><button type="button" class="btn btn-primary" routerLink="/login">Login</button></li>
         <li><button type="button" class="btn btn-primary"  routerLink="/register">Register</button></li>
+        <li><button type="button" class="btn btn-primary" routerLink="/product">Product</button></li>
+        <li><button type="button" class="btn btn-primary" routerLink="/simpleform">SimpleForm</button></li>
+                <li><button type="button" class="btn btn-primary" routerLink="/complexform">ComplexForm</button></li>
       </ul>
        <ul class="nav navbar-nav navbar-right" *ngIf="showLogout">
         <li><button type="button" class="btn btn-primary" (click)="logout()">Logout</button></li>
@@ -41,6 +48,7 @@
     </div>
   </div>
 </nav>
+<!--<ng-content></ng-content>-->
 <!--<div *ngIf="pageName=='register'">
 <app-register [heading]="pageName" (registered)= "handleChange($event)"></app-register>
 </div>

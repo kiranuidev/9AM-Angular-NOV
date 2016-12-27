@@ -9,5 +9,18 @@
 <app-register [heading]="pageName"   (registered)= "handleChange($event)"></app-register>
 </div>-->
 <div class="container">
-    <app-header></app-header>
+    <app-header>
+         <!--<a class="navbar-brand" href="#" card-body>Dealers</a>
+           <a class="navbar-brand" href="#"  >abcd</a>
+         
+           <a class="navbar-brand my-class" href="#">Class Based</a>
+            <a class="navbar-brand" href="#" card1 card2>Multi1</a>
+              <a class="navbar-brand" href="#" card2>Multi2</a>-->
+   
+    </app-header>
+
+    
+    
 </div>
+<input type="text" [(ngModel)]="test">
+<app-product [name]="test"></app-product>
